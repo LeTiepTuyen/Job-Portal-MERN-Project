@@ -1,11 +1,6 @@
 <h1 align="center"><strong>👋Job Portal</strong></h1>
  Job Portal is a web application that connects job seekers with employers, allowing them to search and apply for jobs and manage their job postings.
 
-# Badges
-
-![Version](https://img.shields.io/badge/Version-1.0.0-green.svg)
-[![Node.js CI](https://github.com/Nhat-Kha/jobportal/actions/workflows/node.js.yml/badge.svg)](https://github.com/Nhat-Kha/jobportal/actions/workflows/node.js.yml)
-
 # Directory structure of the web app is as follows:
 
 - Backend/
@@ -39,7 +34,7 @@
 # Usage, Installation
 
 ```
-$ git clone https://github.com/Nhat-Kha/jobportal.git
+$ git clone https://github.com/LeTiepTuyen/Job-Portal-MERN-Project.git
 $ cd jobportal
 ```
 
@@ -53,14 +48,7 @@ $ cd jobportal
 
 ```
  $ npm install
- $ npm start
-```
-
-or
-
-```
-$ yarn install
-$ yarn start
+ $ npm run dev
 ```
 
 ## Backend
@@ -73,14 +61,7 @@ $ yarn start
 
 ```
  $ npm install
- $ npm start
-```
-
-or
-
-```
-$ yarn install
-$ yarn start
+ $ npm run dev
 ```
 
 ## NoSQL
@@ -93,4 +74,4 @@ $ yarn start
 
 # Bugs, issues, and contributing
 
-Found a 🐛? Have a feature request? Feel free to open an [issue](https://github.com/Nhat-Kha/jobportal/issues) or [contributing](https://github.com/Nhat-Kha/jobportal)
+Found a 🐛? Have a feature request? Feel free to open an [issue](https://github.com/LeTiepTuyen/Job-Portal-MERN-Project/issues) or [contributing](https://github.com/LeTiepTuyen/Job-Portal-MERN-Project)

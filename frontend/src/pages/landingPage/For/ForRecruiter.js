@@ -56,7 +56,7 @@ export default function ForRecruiter() {
             <FontAwesomeIcon className="text-5xl mb-6  text-primary" icon={faEnvelopeOpenText} />
             <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 3:</div>
             <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">Applicant apply</h1>
-            <p className="text-xl font-light">Our JobPortal community will discover your listing and apply for the opportunity.</p>
+            <p className="text-xl font-light">Our 2THN Careers community will discover your listing and apply for the opportunity.</p>
           </div>
 
           <div>
@@ -101,7 +101,7 @@ export default function ForRecruiter() {
         answerOne="The hiring reward is the amount Greeters earn when their referral leads to a successful hire, and it is displayed on the job board. The interview reward is the payment Greeters receive if their referral results in an interview. You have the flexibility to set both the hiring and interview rewards. The Greet Fee is a service charge equal to 20% of your hiring reward."
         questionTwo="When and how much do I pay?"
         answerTwo="Greet is currently offering early adopters free access to the service for a limited time, with no monthly subscription fees. You only pay the interview reward and hiring reward when you successfully interview or hire a candidate. Until then, enjoy free promotion for your job postings!"
-        questionThree="How do I get my company on JobPortal?"
+        questionThree="How do I get my company on 2THN Careers?"
         answerThree="Contact tuyentieple@gmail.com"
       />
       {type === "recruiter" ? (

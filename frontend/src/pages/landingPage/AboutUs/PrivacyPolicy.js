@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
 
         <p className="text-xl font-medium mb-10">Last updated: 18 December, 2023</p>
         <p>
-          JobPortal is responsible for the personal information about you that is processed on our website ( ). The
+        2THN Careers is responsible for the personal information about you that is processed on our website ( ). The
           following policy applies when you use our website. We are constantly working on improving our services
           therefore this policy can be changed in the future. The purpose of this policy is to let our users know how we
           handle their personal information, what we use it for, who gets access to it and what rights our users have in

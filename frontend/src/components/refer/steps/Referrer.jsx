@@ -41,7 +41,7 @@ export default function Referrer({ referrer, addReferrer }) {
 
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900 bg-white">
-          How did you know Job Portal?
+          How did you know 2THN Job Portal?
         </label>
         <select className="block border border-grey-light w-full p-3 rounded mb-4">
           <option value="applicant" className="rounded mb-4 text-gray-950">

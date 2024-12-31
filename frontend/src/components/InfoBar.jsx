@@ -11,7 +11,7 @@ export default function InfoBar() {
               <strong> Welcome</strong> to <strong>my</strong> Website
               available.{" "}
               <Link to="/jobs" className="border-b-2 border-black ">
-              Explore Opportunities, Ignite Your Career Journey🔎
+                Explore Opportunities, Ignite Your Career Journey🔎
               </Link>
             </span>
           </p>

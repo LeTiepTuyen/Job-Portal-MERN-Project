@@ -119,18 +119,17 @@ export default function Jumbotron() {
               />
             </div>
             <h1 className="text-black text-6xl md:w-11/12 w-12/12 mx-auto sm:mt-5 font-bold md:mt-5 px-5">
-              The best tools for your job application journey
+            Find the perfect job that fits your future
             </h1>
             <p className="mt-3 text-2xl text-black sm:mt-5 md:mt-5 w-10/12 mx-auto">
-              Assert yourself through a "quality" profile with valuable tools
-              and knowledge from the Job Portal.
+              Discover opportunities and tools to elevate your career journey with ease.
             </p>
             <div className="mt-8 sm:mt-12 mx-auto flex gap-3 justify-center">
               <button
                 onClick={() => openModal()}
                 className="transform ease-in duration-100 hover:-translate-y-1 hover:shadow-lg md:mx-0  text-white shadow font-semibold rounded-full items-center justify-center py-3 border border-transparent text-base  bg-[#F2994A] md:py-4 md:text-lg px-8"
               >
-                Search for a favorite job
+                Explore Your Dream Job
               </button>
 
               <Link

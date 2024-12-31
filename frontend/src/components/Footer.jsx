@@ -26,7 +26,7 @@ export default function Footer() {
               tuyentieple@gmail.com
             </a>
             <span className="font-light">
-              Copyright © 2024 <span className="font-normal"> Job Portal</span> Design.
+              Copyright © 2024 <span className="font-normal"> 2THN Job Portal</span> Design.
             </span>
           </div>
           <div className="w-full sm:w-1/5 md:w-2/5 flex flex-col space-y-2 pb-6 cursor-default">
@@ -92,7 +92,7 @@ export default function Footer() {
             <h1 className="text-2xl font-semibold">Follow us</h1>
             <a
               className="w-28 font-semibold text-lg"
-              href="https://www.instagram.com/kha_martin/"
+              href="https://www.instagram.com/vnuk.edu.vn/?hl=en"
               target="_blank"
               rel="noreferrer"
             >
@@ -100,7 +100,7 @@ export default function Footer() {
             </a>
             <a
               className="w-28 opacity-80 hover:opacity-100 font-semibold text-lg"
-              href="https://github.com/Nhat-Kha"
+              href="https://www.linkedin.com/company/vnukdanang/?originalSubdomain=vn"
               target="_blank"
               rel="noreferrer"
             >

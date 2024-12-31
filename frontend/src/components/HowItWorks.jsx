@@ -34,7 +34,7 @@ export default function HowItWorks() {
                 Create a profile
               </h1>
               <p className="text-xl font-light">
-                Promote your company to our community of tech people.
+                Showcase your company and connect with our vibrant tech community.
               </p>
             </div>
 
@@ -51,8 +51,8 @@ export default function HowItWorks() {
                 Post a job
               </h1>
               <p className="text-xl font-light">
-                Write a job description, set a hiring reward and interview
-                reward.
+                Craft a compelling job description, and set hiring and interview rewards to 
+                attract top talent.
               </p>
             </div>
 
@@ -68,8 +68,8 @@ export default function HowItWorks() {
                 Applicant apply
               </h1>
               <p className="text-xl font-light">
-                Our JOBPORTAL community allows users to discover and apply for
-                jobs.
+                Our JobPortal community will discover your listing and apply for the 
+                opportunity.
               </p>
             </div>
 
@@ -85,8 +85,8 @@ export default function HowItWorks() {
                 Interview and hire
               </h1>
               <p className="text-xl font-light">
-                If you find an interesting candidate you can interview and hire
-                them.
+                Review applications, interview promising candidates, and hire the perfect fit for 
+                your team.
               </p>
             </div>
           </div>
@@ -195,10 +195,10 @@ export default function HowItWorks() {
                 Step 3:
               </div>
               <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">
-                Let the experience begin
+                Get started
               </h1>
               <p className="text-xl font-light">
-                Create a job posting or find the job you desire.
+              Post your job openings or explore opportunities that match your goals.
               </p>
             </div>
           </div>

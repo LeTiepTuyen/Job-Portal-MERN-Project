@@ -35,7 +35,7 @@ export default function ForApplicant() {
               Find a job
             </h1>
             <p className="text-xl font-light">
-              Head over to the job board to find exciting tech jobs.
+            Visit our job board to discover exciting tech roles.
             </p>
           </div>
           <div>
@@ -49,7 +49,7 @@ export default function ForApplicant() {
             <h1 className="text-3xl text-gray-900 pb-3  font-semibold">
               Apply for job
             </h1>
-            <p className="text-xl font-light">Apply for a job you love.</p>
+            <p className="text-xl font-light">Apply for the positions that match your skills and passion.</p>
           </div>
           <div>
             <FontAwesomeIcon
@@ -64,7 +64,7 @@ export default function ForApplicant() {
               Await approval
             </h1>
             <p className="text-xl font-light">
-              Waiting for your job application to be approved by the employer.
+            Wait for the employer to review and approve your application.
             </p>
           </div>
         </div>
@@ -77,9 +77,9 @@ export default function ForApplicant() {
               We will help you find the job you want
             </h1>
             <p className="text-xl mx-auto md:text-left text-center pt-4 md:pr-16 pr-0 mb-12">
-              You need to create an account to apply for jobs. Become part of
-              our Job Portal community to keep track of new and exciting job
-              opportunities.
+            To access the full range of job opportunities, start by creating an account. Becoming a member 
+            of our Job Portal community allows you to apply for jobs, track your applications, 
+            and stay updated with the latest and most exciting career opportunities tailored just for you. 
             </p>
 
             {userType() === "" ? (
@@ -99,13 +99,12 @@ export default function ForApplicant() {
         </div>
       </div>
       <FAQ
-        questionOne="Do I have a limitation on the number of job applications?"
-        answerOne="You can submit as many applications as you like, but when one is accepted, the others will be canceled."
+        questionOne="Is there a limit to the number of job applications I can submit?"
+        answerOne="You can apply to as many jobs as you wish, but once one of your applications is accepted, all other pending applications will automatically be withdrawn."
         questionTwo="When and how much do I get paid?"
-        answerTwo="It varies. On each job ad you can find the specified hiring bonus and the interview bonus. You get paid when your candidate get an interview or get hired."
-        questionThree="Do I have to sign up for a Greeter account to refer my friends?"
-        answerThree=" You do not have to create a Greeter account to refer your friends
-        but it makes the referral process smoother. For example you do not have to add your own personal information each time you submit a referral."
+        answerTwo="Payment varies depending on the job listing. Each job ad specifies the hiring bonus and the interview bonus. You will receive payment once your referred candidate either gets an interview or is successfully hired."
+        questionThree="Do I need to create a Greeter account to refer my friends"
+        answerThree="While creating a Greeter account is not mandatory to refer your friends, it is highly recommended. Having an account streamlines the referral process by eliminating the need to repeatedly enter your personal information for each referral."
       />
       <Banner
         title="Ready to refer someone?"

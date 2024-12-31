@@ -336,7 +336,7 @@ export default function JobBoard({ title, props }) {
 
               <div className="md:col-span-1 col-span-2">
                 <p className="text-xl text-black md:mb-8 mb-16 md:pt-4">
-                  Leave your contact so our Customer Love team can support you
+                Share your contact details, and our Customer Support team will assist you promptly.
                 </p>
                 <Link
                   to={`/jobs/talent-pool/refer`}

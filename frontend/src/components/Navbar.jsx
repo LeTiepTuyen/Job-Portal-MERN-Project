@@ -13,38 +13,6 @@ import Blog from "./blog/Blog";
 
 export default function Navbar() {
   const linkUrl = useLocation();
-  // const [themeToggleDarkIcon, setThemeToggleDarkIcon] = useState(null);
-  // const [themeToggleLightIcon, setThemeToggleLightIcon] = useState(null);
-
-  // useEffect(() => {
-  //   setThemeToggleDarkIcon(document.getElementById("theme-toggle-dark-icon"));
-  //   setThemeToggleLightIcon(document.getElementById("theme-toggle-light-icon"));
-  // }, []);
-
-  // useEffect(() => {
-  //   if (
-  //     localStorage.getItem("color-theme") === "dark" ||
-  //     (!("color-theme" in localStorage) &&
-  //       window.matchMedia("(prefers-color-scheme: dark)").matches)
-  //   ) {
-  //     themeToggleLightIcon?.classList?.remove("hidden");
-  //   } else {
-  //     themeToggleDarkIcon?.classList?.remove("hidden");
-  //   }
-  // }, [themeToggleDarkIcon, themeToggleLightIcon]);
-
-  // const handleThemeToggle = () => {
-  //   // Toggle icons inside button
-  //   themeToggleDarkIcon?.classList?.toggle("hidden");
-  //   themeToggleLightIcon?.classList?.toggle("hidden");
-
-  //   // Toggle theme
-  //   const currentTheme = localStorage.getItem("color-theme") || "light";
-  //   const newTheme = currentTheme === "light" ? "dark" : "light";
-  //   document.documentElement.classList.toggle("dark", newTheme === "dark");
-  //   localStorage.setItem("color-theme", newTheme);
-  // };
-
   console.log(linkUrl);
 
   return (
@@ -56,7 +24,7 @@ export default function Navbar() {
               <Link className="flex pt-1" to="/blog">
                 <img className="md:pl-5 pl-2" src={logo} alt="logo" />
                 <h1 className="md:pl-2 pl-2 text-2xl sm:text-2xl md:text-3xl text-[#F2994A] font-medium hover:opacity-60">
-                  JobPortal
+                2THN Careers
                 </h1>
                 <FontAwesomeIcon icon={faBlog} />
               </Link>
@@ -88,7 +56,7 @@ export default function Navbar() {
               <Link className="flex pt-1" to="/">
                 <img className="md:pl-5 pl-2" src={logo} alt="logo" />
                 <h1 className="md:pl-2 pl-2 text-2xl sm:text-2xl md:text-3xl text-[#F2994A] font-medium hover:opacity-60">
-                  JobPortal
+                  2THN Careers
                 </h1>
               </Link>
 

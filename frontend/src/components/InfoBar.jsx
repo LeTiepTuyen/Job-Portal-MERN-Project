@@ -6,12 +6,12 @@ export default function InfoBar() {
       <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
         <div className="relative">
           <p className="ml-3 text-white font-medium">
-            <span className="mr-2">💸</span>
+            <span className="mr-2">💼</span>
             <span>
               <strong> Welcome</strong> to <strong>my</strong> Website
               available.{" "}
               <Link to="/jobs" className="border-b-2 border-black ">
-                Find what you do, Work you like❤️
+              Explore Opportunities, Ignite Your Career Journey🔎
               </Link>
             </span>
           </p>

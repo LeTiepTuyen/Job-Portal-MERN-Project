@@ -14,10 +14,10 @@ export default function ForRecruiter() {
     <>
       <div className="bg-light pt-40 pb-8">
         <div className="md:pt-0 mb-20 md:w-10/12 w-11/12 mx-auto text-center">
-          <h1 className="mx-auto md:text-7xl text-5xl font-bold text-gray-900">Forget expensive headhunters</h1>
+          <h1 className="mx-auto md:text-7xl text-5xl font-bold text-gray-900">Say Goodbye to Costly Headhunters</h1>
           <p className="text-xl mx-auto md:w-8/12 w-12/12 pt-4 mb-12">
-            Post jobs for free and only pay when you interview or hire someone. Make your recruitment process
-            crowdsourced and remove expensive headhunters from the equation.
+          Post jobs at no cost and pay only when you interview or hire a candidate. Transform your recruitment process with crowdsourcing and
+          eliminate the need for expensive headhunters.
           </p>
 
           {userType() === "" ? (
@@ -41,7 +41,7 @@ export default function ForRecruiter() {
 
             <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 1:</div>
             <h1 className="text-3xl text-gray-900 pb-3 font-semibold">Create a profile</h1>
-            <p className="text-xl font-light">Promote your company to our community of tech people.</p>
+            <p className="text-xl font-light">Showcase your company and connect with our vibrant tech community.</p>
           </div>
 
           <div>
@@ -49,21 +49,21 @@ export default function ForRecruiter() {
 
             <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 2:</div>
             <h1 className="text-3xl text-gray-900 pb-3  font-semibold">Post a job</h1>
-            <p className="text-xl font-light">Write a job description, set a hiring reward and interview reward.</p>
+            <p className="text-xl font-light">Craft a compelling job description, and set hiring and interview rewards to attract top talent.</p>
           </div>
 
           <div>
             <FontAwesomeIcon className="text-5xl mb-6  text-primary" icon={faEnvelopeOpenText} />
             <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 3:</div>
             <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">Applicant apply</h1>
-            <p className="text-xl font-light">Our JOBPORTAL community allows users to discover and apply for jobs.</p>
+            <p className="text-xl font-light">Our JobPortal community will discover your listing and apply for the opportunity.</p>
           </div>
 
           <div>
             <FontAwesomeIcon className="text-5xl mb-6  text-yellow-400" icon={faHandsHelping} />
             <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 4:</div>
             <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">Interview and hire</h1>
-            <p className="text-xl font-light">If you find an interesting candidate you can interview and hire them.</p>
+            <p className="text-xl font-light">Review applications, interview promising candidates, and hire the perfect fit for your team.</p>
           </div>
         </div>
       </div>
@@ -97,10 +97,10 @@ export default function ForRecruiter() {
       </div> */}
 
       <FAQ
-        questionOne="What is the hiring reward, interview reward and Greet Fee?"
-        answerOne="The hiring reward is what the Greeters will see on the job board and get paid if their referral results in a hiring. The interview reward is what is paid if a referral ends up with an interview. You decide what the hiring- and interview reward should be. The Greet Fee is equal to 20% of your hiring reward."
+        questionOne="What are the hiring reward, interview reward, and Greet Fee?"
+        answerOne="The hiring reward is the amount Greeters earn when their referral leads to a successful hire, and it is displayed on the job board. The interview reward is the payment Greeters receive if their referral results in an interview. You have the flexibility to set both the hiring and interview rewards. The Greet Fee is a service charge equal to 20% of your hiring reward."
         questionTwo="When and how much do I pay?"
-        answerTwo="Greet was recently launched and we are offering early adopters to start using the service for free (for a limited time), i.e no monthly pricing plan. Instead, you only pay for the interview reward and hiring reward when you interview or hire someone. So until then, you get free promotion."
+        answerTwo="Greet is currently offering early adopters free access to the service for a limited time, with no monthly subscription fees. You only pay the interview reward and hiring reward when you successfully interview or hire a candidate. Until then, enjoy free promotion for your job postings!"
         questionThree="How do I get my company on JobPortal?"
         answerThree="Contact tuyentieple@gmail.com"
       />

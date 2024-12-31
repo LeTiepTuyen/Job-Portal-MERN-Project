@@ -26,7 +26,7 @@ export default function Footer() {
               tuyentieple@gmail.com
             </a>
             <span className="font-light">
-              Copyright © 2024 <span className="font-normal"> Job Portal</span> Design.
+              Copyright © 2024 <span className="font-normal"> 2THN Job Portal</span> Design.
             </span>
           </div>
           <div className="w-full sm:w-1/5 md:w-2/5 flex flex-col space-y-2 pb-6 cursor-default">

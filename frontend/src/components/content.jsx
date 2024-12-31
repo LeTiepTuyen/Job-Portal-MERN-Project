@@ -119,10 +119,10 @@ export default function Jumbotron() {
               />
             </div>
             <h1 className="text-black text-6xl md:w-11/12 w-12/12 mx-auto sm:mt-5 font-bold md:mt-5 px-5">
-            Find the Perfect Job That Fits Your Future
+            Find the perfect job that fits your future
             </h1>
             <p className="mt-3 text-2xl text-black sm:mt-5 md:mt-5 w-10/12 mx-auto">
-            Discover opportunities and tools to elevate your career journey with ease.
+              Discover opportunities and tools to elevate your career journey with ease.
             </p>
             <div className="mt-8 sm:mt-12 mx-auto flex gap-3 justify-center">
               <button

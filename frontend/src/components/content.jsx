@@ -31,7 +31,7 @@ export default function Jumbotron() {
   return (
     <>
       {type === "recruiter" ? (
-        <main className="bg-[#f8e5d4] ">
+        <main className="bg-[#D9C9C5] ">
           <div className="w-11/12 flex flex-wrap mx-auto">
             <div className="lg:text-left text-center lg:w-7/12 w-12/12 lg:pt-24 pt-12 lg:pb-40 pb-16 mx-auto">
               <h1 className="text-black lg:text-6xl text-4xl sm:mt-5 font-bold sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0">
@@ -63,7 +63,7 @@ export default function Jumbotron() {
           </div>
         </main>
       ) : type === "applicant" ? (
-        <main className="bg-[#f8e5d4] ">
+        <main className="bg-[#ECDFCC] ">
           <div className="w-11/12 flex flex-wrap mx-auto">
             <div className="md:w-5/12 w-12/12 md:pt-12 md:pl-10 pl-0 pt-0 md:pb-12 pb-20 mx-auto">
               <img
@@ -94,7 +94,7 @@ export default function Jumbotron() {
           </div>
         </main>
       ) : (
-        <main className="bg-[#f8e5d4]">
+        <main className="bg-gradient-to-r from-[#FFDCD0] to-[#FFEAE3]">
           <div className="text-center lg:w-7/12 w-12/12 ld:pt-52 md:pt-40 pt-32 pb-52 mx-auto h-2/3">
             <div className="relative w-full bg-light h-2/3 md:block hidden ">
               <img
@@ -127,14 +127,14 @@ export default function Jumbotron() {
             <div className="mt-8 sm:mt-12 mx-auto flex gap-3 justify-center">
               <button
                 onClick={() => openModal()}
-                className="transform ease-in duration-100 hover:-translate-y-1 hover:shadow-lg md:mx-0  text-white shadow font-semibold rounded-full items-center justify-center py-3 border border-transparent text-base  bg-[#F2994A] md:py-4 md:text-lg px-8"
+                className="transform ease-in duration-100 hover:-translate-y-1 hover:shadow-lg md:mx-0  text-white shadow font-semibold rounded-full items-center justify-center py-3 border border-transparent text-base bg-gradient-to-r from-[#FF5151] to-[#FE2C55] md:py-4 md:text-lg px-8"
               >
                 Explore Your Dream Job
               </button>
 
               <Link
                 to="/sign-up"
-                className="transform ease-in duration-100 md:mx-0 text-black  font-semibold rounded-full items-center justify-center py-3 border-2  hover:bg-black hover:text-primary  text-base  bg-primary md:py-4 md:text-lg px-8"
+                className="transform ease-in duration-100 md:mx-0 text-black  font-semibold rounded-full items-center justify-center py-3 border-2  hover:bg-yellow-500 hover:text-black text-base bg-primary md:py-4 md:text-lg px-8"
               >
                 Sign up for free
               </Link>

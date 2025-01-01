@@ -198,7 +198,7 @@ export default function JobBoard({ title, props }) {
 
   return (
     <>
-      <div className="bg-light">
+      <div className="bg-[#FFF] border-t-2">
         <div className="md:w-10/12 w-11/12 mx-auto h-full md:pb-28 pb-12">
           {title === false ? (
             <div className="block pt-4">
@@ -328,7 +328,7 @@ export default function JobBoard({ title, props }) {
             </div>
           ) : null}
 
-          <div className="mt-20 col-span-3 transform ease-in duration-100 w-full bg-primary rounded-2xl p-6 text-left relative">
+          <div className="mt-20 col-span-3 transform ease-in duration-100 w-full bg-secondary rounded-2xl p-6 text-left relative">
             <div className="grid grid-cols-2 md:p-10 p-4 gap-6">
               <h1 className="text-black lg:text-6xl text-4xl font-bold  sm:mx-auto lg:mx-0 mb-4 md:col-span-1 col-span-2">
                 Let’s find your IT Talents

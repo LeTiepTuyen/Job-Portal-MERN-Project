@@ -297,7 +297,7 @@ const Myjob = ({ job }, index) => {
             </>
           ) : null}
           <Link
-            className="ml-2 font-semibold mr-2 cursor-pointer border-b-2 border-black bg-gray-100 hover:bg-gray-200 ease-out duration-300 px-3 py-3 rounded-xl border-none"
+            className="ml-2 font-semibold mr-2 cursor-pointer border-b-2 border-black bg-[#FFC828] hover:bg-yellow-500 ease-out duration-300 px-3 py-3 rounded-xl border-none"
             to={`/jobs/${job._id}`}
           >
             About the job

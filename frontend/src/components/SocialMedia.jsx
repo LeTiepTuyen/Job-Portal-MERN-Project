@@ -6,7 +6,7 @@ import five from "assets/images/6.png";
 
 export default function SocialMedia() {
   return (
-    <div className="bg-lightYellow py-20">
+    <div className="bg-gradient-to-r from-[#FFDCD0] to-[#FFEAE3] py-20">
       <h1 className="md:text-6xl text-4xl font-bold text-gray-900 text-center pb-3">
         Follow us
       </h1>

@@ -16,14 +16,14 @@ export default function Navbar() {
   console.log(linkUrl);
 
   return (
-    <Disclosure as="nav" className="bg-[#FFF5EC] w-full">
+    <Disclosure as="nav" className="bg-[#FFF] w-full">
       <>
         <div className="flex justify-between h-24 py-6 md:w-10/12 w-11/12 mx-auto">
           {linkUrl.pathname.startsWith("/blog") && (
             <div className="flex">
               <Link className="flex pt-1" to="/blog">
                 <img className="md:pl-5 pl-2" src={logo} alt="logo" />
-                <h1 className="md:pl-2 pl-2 text-2xl sm:text-2xl md:text-3xl text-[#F2994A] font-medium hover:opacity-60">
+                <h1 className="md:pl-2 pl-2 text-2xl sm:text-2xl md:text-3xl text-[#333333] font-medium hover:opacity-60">
                 2THN Careers
                 </h1>
                 <FontAwesomeIcon icon={faBlog} />
@@ -55,7 +55,7 @@ export default function Navbar() {
             <div className="flex">
               <Link className="flex pt-1" to="/">
                 <img className="md:pl-5 pl-2" src={logo} alt="logo" />
-                <h1 className="md:pl-2 pl-2 text-2xl sm:text-2xl md:text-3xl text-[#F2994A] font-medium hover:opacity-60">
+                <h1 className="md:pl-2 pl-2 text-2xl sm:text-2xl md:text-3xl text-[#333333] font-medium hover:opacity-60">
                   2THN Careers
                 </h1>
               </Link>
@@ -116,8 +116,7 @@ export default function Navbar() {
                       Sign in
                     </Link>
                     <Link
-                      className="lg:block hidden text-center transform ease-in duration-100 hover:-translate-y-1 hover:shadow-lg w-32 justify-center px-8 py-2 mb-1 bg-[#F2994A] text-white rounded-full text-lg font-semibold"
-                      to="/sign-up"
+                      className="lg:block hidden text-center transform ease-in duration-100 hover:-translate-y-1 hover:shadow-lg w-32 justify-center px-8 py-2 mb-1 bg-gradient-to-r from-[#FF5151] to-[#FE2C55] text-white rounded-full text-lg font-semibold"                      to="/sign-up"
                     >
                       Sign up
                     </Link>

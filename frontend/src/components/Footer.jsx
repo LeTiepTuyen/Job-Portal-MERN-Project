@@ -9,7 +9,7 @@ import InputField from "./InputField";
 export default function Footer() {
   const linkUrl = useLocation();
   return (
-    <div className="bg-[#FFF5EC] text-whblackite text-left">
+    <div className="bg-gray-200 text-black text-left">
       {!linkUrl.pathname.startsWith("/blog") && (
         <div className="w-10/12 mx-auto pt-20 pb-8 flex flex-col md:flex-row sm:flex-row space-y-2 justify-start">
           <div className="w-full sm:w-2/5 md:w-3/5 pr-6 flex flex-col space-y-2 pb-6 cursor-default">
@@ -120,13 +120,13 @@ export default function Footer() {
             <div className="w-full md:w-2/4 lg:w-1/3 h-16 flex items-center justify-center md:justify-start ">
               <input
                 placeholder="Email Address"
-                className="p-4 rounded outline-none bg-gray-50 focus:bg-white transition duration-200"
+                className="p-4 rounded outline-none bg-white focus:bg-white transition duration-200"
               />
             </div>
             <div>
               <button
-                className="text-center transform hover:bg-yellow-400 transition duration-200
-              cursor-pointer font-bold text-md px-8 py-3 bg-yellow-300 rounded-xl text-black"
+                className="text-center transform hover:bg-rose-500 transition duration-200
+              cursor-pointer font-bold text-md px-8 py-3 bg-secondary rounded-xl text-white"
               >
                 Send mail
               </button>

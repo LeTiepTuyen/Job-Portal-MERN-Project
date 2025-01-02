@@ -22,71 +22,38 @@ export default function HowItWorks() {
           </h1>
           <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-14 md:py-40 md:pb-12 py-12   md:text-left text-center md:w-10/12 w-11/12  mx-auto ">
             <div>
-              <FontAwesomeIcon
-                className="text-5xl mb-6  text-green-500"
-                icon={faCopy}
-              />
+              <FontAwesomeIcon className="text-5xl mb-6  text-green-500" icon={faSearch} />
 
-              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">
-                Step 1:
-              </div>
-              <h1 className="text-3xl text-gray-900 pb-3 font-semibold">
-                Create a profile
-              </h1>
+              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 1:</div>
+              <h1 className="text-3xl text-gray-900 pb-3 font-semibold">Create a profile</h1>
+              <p className="text-xl font-light">Showcase your company and connect with our vibrant tech community.</p>
+            </div>
+
+            <div>
+              <FontAwesomeIcon className="text-5xl mb-6 text-indigo-500 " icon={faIdCard} />
+
+              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 2:</div>
+              <h1 className="text-3xl text-gray-900 pb-3  font-semibold">Post a job</h1>
               <p className="text-xl font-light">
-                Showcase your company and connect with our vibrant tech community.
+                Craft a compelling job description, and set hiring and interview rewards to attract top talent.
               </p>
             </div>
 
             <div>
-              <FontAwesomeIcon
-                className="text-5xl mb-6 text-indigo-500 "
-                icon={faIdCard}
-              />
-
-              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">
-                Step 2:
-              </div>
-              <h1 className="text-3xl text-gray-900 pb-3  font-semibold">
-                Post a job
-              </h1>
+              <FontAwesomeIcon className="text-5xl mb-6  text-primary" icon={faEnvelopeOpenText} />
+              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 3:</div>
+              <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">Applicant apply</h1>
               <p className="text-xl font-light">
-                Craft a compelling job description, and set hiring and interview rewards to 
-                attract top talent.
+                Our 2THN Careers community will discover your listing and apply for the opportunity.
               </p>
             </div>
 
             <div>
-              <FontAwesomeIcon
-                className="text-5xl mb-6  text-primary"
-                icon={faEnvelopeOpenText}
-              />
-              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">
-                Step 3:
-              </div>
-              <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">
-                Applicant apply
-              </h1>
+              <FontAwesomeIcon className="text-5xl mb-6  text-yellow-400" icon={faHandsHelping} />
+              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 4:</div>
+              <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">Interview and hire</h1>
               <p className="text-xl font-light">
-                Our 2THN Careers community will discover your listing and apply for the 
-                opportunity.
-              </p>
-            </div>
-
-            <div>
-              <FontAwesomeIcon
-                className="text-5xl mb-6  text-yellow-400"
-                icon={faHandsHelping}
-              />
-              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">
-                Step 4:
-              </div>
-              <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">
-                Interview and hire
-              </h1>
-              <p className="text-xl font-light">
-                Review applications, interview promising candidates, and hire the perfect fit for 
-                your team.
+                Review applications, interview promising candidates, and hire the perfect fit for your team.
               </p>
             </div>
           </div>
@@ -98,51 +65,26 @@ export default function HowItWorks() {
           </h1>
           <div className="grid lg:grid-cols-3 grid-cols-1 gap-12 md:py-32 py-12  text-center md:w-10/12 w-11/12  mx-auto ">
             <div>
-              <FontAwesomeIcon
-                className="text-5xl mb-6 text-secondary"
-                icon={faSearch}
-              />
+              <FontAwesomeIcon className="text-5xl mb-6 text-secondary" icon={faSearch} />
 
-              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">
-                Step 1:
-              </div>
-              <h1 className="text-3xl text-gray-900 pb-3 font-semibold">
-                Find a job
-              </h1>
-              <p className="text-xl font-light">
-                Find exciting tech jobs on the job board.
-              </p>
+              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 1:</div>
+              <h1 className="text-3xl text-gray-900 pb-3 font-semibold">Find a job</h1>
+              <p className="text-xl font-light">Find exciting tech jobs on the job board.</p>
             </div>
 
             <div>
-              <FontAwesomeIcon
-                className="text-5xl mb-6 text-yellow-400"
-                icon={faHandPeace}
-              />
-              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">
-                Step 2:
-              </div>
-              <h1 className="text-3xl text-gray-900 pb-3  font-semibold">
-                Apply for job
-              </h1>
+              <FontAwesomeIcon className="text-5xl mb-6 text-yellow-400" icon={faHandPeace} />
+              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 2:</div>
+              <h1 className="text-3xl text-gray-900 pb-3  font-semibold">Apply for job</h1>
               <p className="text-xl font-light">Apply for a job you love.</p>
             </div>
 
             <div>
-              <FontAwesomeIcon
-                className="text-5xl mb-6 text-green-500"
-                icon={faMoneyBillWave}
-              />
+              <FontAwesomeIcon className="text-5xl mb-6 text-green-500" icon={faMoneyBillWave} />
 
-              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">
-                Step 3:
-              </div>
-              <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">
-                Await approval
-              </h1>
-              <p className="text-xl font-light">
-                Waiting for your job application to be approved by the employer.
-              </p>
+              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 3:</div>
+              <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">Await approval</h1>
+              <p className="text-xl font-light">Waiting for your job application to be approved by the employer.</p>
             </div>
           </div>
         </>
@@ -153,52 +95,27 @@ export default function HowItWorks() {
           </h1>
           <div className="grid lg:grid-cols-3 grid-cols-1 gap-12 md:py-32 py-12  text-center md:w-10/12 w-11/12  mx-auto ">
             <div>
-              <FontAwesomeIcon
-                className="text-5xl mb-6 text-secondary"
-                icon={faSearch}
-              />
+              <FontAwesomeIcon className="text-5xl mb-6 text-secondary" icon={faSearch} />
 
-              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">
-                Step 1:
-              </div>
-              <h1 className="text-3xl text-gray-900 pb-3 font-semibold">
-                Create account
-              </h1>
-              <p className="text-xl font-light">
-                Create a user account for applicants or recruiters.
-              </p>
+              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 1:</div>
+              <h1 className="text-3xl text-gray-900 pb-3 font-semibold">Create account</h1>
+              <p className="text-xl font-light">Create a user account for applicants or recruiters.</p>
             </div>
 
             <div>
-              <FontAwesomeIcon
-                className="text-5xl mb-6 text-yellow-400"
-                icon={faHandPeace}
-              />
-              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">
-                Step 2:
-              </div>
-              <h1 className="text-3xl text-gray-900 pb-3  font-semibold">
-                Log in
-              </h1>
-              <p className="text-xl font-light">
-                Log in with the account you've created.
-              </p>
+              <FontAwesomeIcon className="text-5xl mb-6 text-yellow-400" icon={faHandPeace} />
+              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 2:</div>
+              <h1 className="text-3xl text-gray-900 pb-3  font-semibold">Log in</h1>
+              <p className="text-xl font-light">Log in with the account you've created.</p>
             </div>
 
             <div>
-              <FontAwesomeIcon
-                className="text-5xl mb-6 text-green-500"
-                icon={faMoneyBillWave}
-              />
+              <FontAwesomeIcon className="text-5xl mb-6 text-green-500" icon={faMoneyBillWave} />
 
-              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">
-                Step 3:
-              </div>
-              <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">
-                Get started
-              </h1>
+              <div className="text-gray-900 text-md tracking-wide pb-2 uppercase font-semibold">Step 3:</div>
+              <h1 className="text-3xl  text-gray-900 pb-3 font-semibold">Get started</h1>
               <p className="text-xl font-light">
-              Post your job openings or explore opportunities that match your goals.
+                Post your job openings or explore opportunities that match your goals.
               </p>
             </div>
           </div>

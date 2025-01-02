@@ -8,8 +8,8 @@ export default function InfoBar() {
           <p className="ml-3 text-white font-medium">
             <span className="mr-2"></span>
             <span>
-              <strong> Welcome</strong> to <strong>my</strong> to
-              2THN! {" "}
+              <strong> Welcome</strong> to <strong>my </strong>
+              2THN Careers!{"  "}
               <Link to="/jobs" className="border-b-2 border-gray-50 ">
                 Your dream space for hiring and working 🩵
               </Link>

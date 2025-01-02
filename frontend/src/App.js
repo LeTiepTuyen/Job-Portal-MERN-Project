@@ -35,6 +35,7 @@ import InfoRecruiter from "pages/landingPage/InfoRecruiter";
 import { Dashboard } from "pages/Admin1/Dashboard";
 import BlogHome from "components/blog/home-blog";
 import DetailNews from "components/blog/body-news/DetailNews";
+import OTPInput from "pages/landingPage/SignIn/EmailVerify/OTPInput";
 
 export const SetPopupContext = createContext();
 
@@ -83,53 +84,20 @@ export default function App() {
           <Route exact path="/sign-in" element={<SignIn />} />
           <Route exact path="/password/reset/:token" element={<Reset />} />
           <Route exact path="/reset-recovered" element={<Recovered />} />
-          <Route
-            exact
-            path="/referrals"
-            element={<Referrals />}
-            type={type === "applicant"}
-          />
+          <Route exact path="/verify-email" element={<OTPInput />} />
+          <Route exact path="/referrals" element={<Referrals />} type={type === "applicant"} />
           <Route exact path="/jobs" element={<Jobs />} />
           <Route exact path="/for-recruiter" element={<ForRecruiter />} />
           <Route exact path="/for-applicant" element={<ForApplicant />} />
           <Route exact path="/leaderboard" element={<Leaderboard />} />
           <Route exact path="/jobs/:id" element={<Job />} />
           <Route exact path="/jobs/:id/refer" element={<Refer />} />
-          <Route
-            exact
-            path="/sign-in/forgot-password"
-            element={<ResetPassword />}
-          />
-          <Route
-            exact
-            path="/dashboard/*"
-            element={<Dashboard />}
-            type={type}
-          />
-          <Route
-            exact
-            path="/admin"
-            element={<AdminJobs />}
-            type={type === "recruiter"}
-          />
-          <Route
-            exact
-            path="/admin/:id"
-            element={<AdminJob />}
-            type={type === "recruiter"}
-          />
-          <Route
-            exact
-            path="/create-new-job"
-            element={<AdminAddJob />}
-            type={type}
-          />
-          <Route
-            exact
-            path="/talent-pool"
-            element={<TalentPool />}
-            type={type}
-          />
+          <Route exact path="/sign-in/forgot-password" element={<ResetPassword />} />
+          <Route exact path="/dashboard/*" element={<Dashboard />} type={type} />
+          <Route exact path="/admin" element={<AdminJobs />} type={type === "recruiter"} />
+          <Route exact path="/admin/:id" element={<AdminJob />} type={type === "recruiter"} />
+          <Route exact path="/create-new-job" element={<AdminAddJob />} type={type} />
+          <Route exact path="/talent-pool" element={<TalentPool />} type={type} />
 
           <Route exact path="/applicant/settings" element={<Settings />} />
           <Route exact path="/admin/settings" element={<AdminSettings />} />

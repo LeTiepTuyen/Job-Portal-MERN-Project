@@ -269,7 +269,7 @@ const forgotPassword = async (req, res) => {
     <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px">Nếu bạn không yêu cầu đặt lại mật khẩu, 
     thì có thể bỏ qua email này</p>
     <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 14px">Cảm ơn bạn, </p>
-    <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 14px">JobPortal Support Team!</p>
+    <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 14px">2THN Careers Support Team!</p>
     <img src="https://res.cloudinary.com/dkmkutpxp/image/upload/v1703743129/a4qjcagbhc7juqqjlpir.jpg" style="width: 20rem" alt="thumbnail">
   `;
 

@@ -9,13 +9,13 @@ import InputField from "./InputField";
 export default function Footer() {
   const linkUrl = useLocation();
   return (
-    <div className="bg-[#FFF5EC] text-whblackite text-left">
+    <div className="bg-gray-200 text-black text-left">
       {!linkUrl.pathname.startsWith("/blog") && (
         <div className="w-10/12 mx-auto pt-20 pb-8 flex flex-col md:flex-row sm:flex-row space-y-2 justify-start">
           <div className="w-full sm:w-2/5 md:w-3/5 pr-6 flex flex-col space-y-2 pb-6 cursor-default">
             <Link className="flex pt-1" to="/">
               <img className="h-12 pb-2 " src={logo} alt="logo" />
-              <h1 className="md:pl-2 pl-2 text-4xl text-black font-medium hover:opacity-60">JobPortal</h1>
+              <h1 className="md:pl-2 pl-2 text-4xl text-black font-medium hover:opacity-60">2THN Careers</h1>
             </Link>
             <p className="md:w-80 w-full text-lg font-medium -mt-2 ">Quality over quantity.</p>
 
@@ -73,7 +73,7 @@ export default function Footer() {
           </div>
 
           <div className="w-full sm:w-1/5 md:w-2/5 flex flex-col space-y-2 pb-6">
-            <h1 className="text-2xl font-semibold">JobPortal</h1>
+            <h1 className="text-2xl font-semibold">2THN Careers</h1>
 
             <Link className="w-28 opacity-60 hover:opacity-100 font-semibold text-lg" to="/about">
               About us
@@ -114,26 +114,26 @@ export default function Footer() {
           <div className="w-full sm:w-2/5 md:w-3/5 pr-6 flex flex-col space-y-2 pb-6 cursor-default">
             <Link className="flex pt-1" to="/">
               <img className="h-12 pb-2 " src={logo} alt="logo" />
-              <h1 className="md:pl-2 pl-2 text-4xl text-black font-medium hover:opacity-60">JobPortal</h1>
+              <h1 className="md:pl-2 pl-2 text-4xl text-black font-medium hover:opacity-60">2THN Careers</h1>
               <FontAwesomeIcon icon={faBlog} />
             </Link>
             <div className="w-full md:w-2/4 lg:w-1/3 h-16 flex items-center justify-center md:justify-start ">
               <input
                 placeholder="Email Address"
-                className="p-4 rounded outline-none bg-gray-50 focus:bg-white transition duration-200"
+                className="p-4 rounded outline-none bg-white focus:bg-white transition duration-200"
               />
             </div>
             <div>
               <button
-                className="text-center transform hover:bg-yellow-400 transition duration-200
-              cursor-pointer font-bold text-md px-8 py-3 bg-yellow-300 rounded-xl text-black"
+                className="text-center transform hover:bg-rose-500 transition duration-200
+              cursor-pointer font-bold text-md px-8 py-3 bg-secondary rounded-xl text-white"
               >
                 Send mail
               </button>
             </div>
             <span className="break-all w-3/4">
               By providing your email address, you agree to the <strong>Terms of Service</strong> and{" "}
-              <strong>Privacy Policy</strong> of JobPortal regarding your privacy information.
+              <strong>Privacy Policy</strong> of 2THN Careers regarding your privacy information.
             </span>
             <div className="flex gap-4">
               <div className="w-10 h-10">
@@ -207,7 +207,7 @@ export default function Footer() {
           </div>
 
           <div className="w-full sm:w-1/5 md:w-2/5 flex flex-col space-y-2 pb-6">
-            <h1 className="text-2xl font-semibold">JobPortal</h1>
+            <h1 className="text-2xl font-semibold">2THN Careers</h1>
 
             <Link className="w-28 opacity-60 hover:opacity-100 font-semibold text-lg" to="/about">
               About us

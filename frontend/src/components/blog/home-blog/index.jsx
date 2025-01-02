@@ -6,14 +6,14 @@ import tags from "data/conversations-data";
 export default function BlogHome() {
   return (
     <>
-      <main className="bg-gradient-to-r from-cyan-50 to-[#f8e5d4] ">
+      <main className="bg-gradient-to-r from-[#FFDCD0] to-[#FFEAE3] ">
         <div className="w-11/12 mx-auto">
           <div className="lg:text-left text-center lg:w-full w-full lg:pt-24 pt-12 lg:pb-40 pb-16">
             <div className="">
-              <h1 className="text-[#F2994A] lg:text-6xl text-4xl sm:mt-5 font-bold sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0">
-                JobPortal
+              <h1 className="text-[#FF5151] lg:text-6xl text-4xl sm:mt-5 font-bold sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0">
+              2THN Careers
               </h1>
-              <span className="lg:text-6xl text-4xl sm:mt-5 font-bold sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0 text-slate-500">
+              <span className="lg:text-6xl text-4xl sm:mt-5 font-bold sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0 text-zinc-900">
                 - The idea of developing your IT career
               </span>
             </div>
@@ -22,7 +22,7 @@ export default function BlogHome() {
                 placeholder="Search keyword"
                 className="w-2/4 p-4 rounded-lg"
               />
-              <Link className="transform ease-in duration-100 md:mx-0 text-black  font-semibold rounded-xl items-center justify-center py-3 border-2  hover:bg-black hover:text-primary  text-base  bg-primary md:py-4 md:text-lg px-8">
+              <Link className="transform ease-in duration-100 md:mx-0 text-white  font-semibold rounded-xl items-center justify-center py-3 border-2  hover:bg-primary hover:text-white  text-base  bg-[#FF5151] md:py-4 md:text-lg px-8">
                 Search
               </Link>
             </div>

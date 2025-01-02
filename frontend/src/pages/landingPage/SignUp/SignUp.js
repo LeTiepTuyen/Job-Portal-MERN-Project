@@ -119,9 +119,7 @@ export default function SignUp() {
       signupDetails.email.trim().length > 0 &&
       signupDetails.password.trim().length > 0 &&
       chips.some((item) => item.trim() !== "") &&
-      signupDetails.education.every(
-        (item) => item.institutionName.trim() !== ""
-      ) &&
+      signupDetails.education.every((item) => item.institutionName.trim() !== "") &&
       signupDetails.profile.trim().length > 0 &&
       typeof signupDetails.news === "boolean";
   } else {
@@ -130,8 +128,7 @@ export default function SignUp() {
       signupDetails.email.trim().length > 0 &&
       signupDetails.password.trim().length > 0 &&
       signupDetails.bio.trim().length > 0 &&
-      (signupDetails.contactNumber.trim().length === 0 ||
-        isValidPhoneNumber(signupDetails.contactNumber)) &&
+      (signupDetails.contactNumber.trim().length === 0 || isValidPhoneNumber(signupDetails.contactNumber)) &&
       signupDetails.profile.trim().length > 0 &&
       typeof signupDetails.news === "boolean";
   }
@@ -145,38 +142,10 @@ export default function SignUp() {
   };
 
   const handleLogin = () => {
-    // if (signupDetails.name === "") {
-    //   setInputErrorHandler((prev) => ({
-    //     ...prev,
-    //     name: {
-    //       message: "name is required",
-    //     },
-    //   }));
-    //   return;
-    // } else if (signupDetails.email === "") {
-    //   setInputErrorHandler((prev) => ({
-    //     ...prev,
-    //     email: {
-    //       message: "email is required",
-    //     },
-    //   }));
-    //   return;
-    // } else if (signupDetails.password === "") {
-    //   setInputErrorHandler((prev) => ({
-    //     ...prev,
-    //     password: {
-    //       message: "password is required",
-    //     },
-    //   }));
-    //   return;
-    // }
     try {
       const tmpErrorHandler = {};
       Object.keys(inputErrorHandler).forEach((obj) => {
-        if (
-          inputErrorHandler[obj].required &&
-          inputErrorHandler[obj].untouched
-        ) {
+        if (inputErrorHandler[obj].required && inputErrorHandler[obj].untouched) {
           tmpErrorHandler[obj] = {
             required: true,
             untouched: false,
@@ -209,18 +178,22 @@ export default function SignUp() {
         axios
           .post(apiList.signup, updatedDetails)
           .then((response) => {
-            localStorage.setItem("token", response.data.token);
-            localStorage.setItem("type", response.data.type);
-            localStorage.setItem("id", response.data._id);
-            setLoggedin(isAuth());
-            setPopup({
-              open: true,
-              icon: "success",
-              message: "Logged in successfully",
-            });
-            history("/referrals");
-            console.log("export" + response);
-            console.log(response?.data.type);
+            const emailVerificationRequired = response.data.emailVerificationRequired;
+            if (emailVerificationRequired) {
+              localStorage.setItem("email", signupDetails.email);
+              history("/verify-email"); // Chuyển hướng đến trang xác minh OTP
+            } else {
+              localStorage.setItem("token", response.data.token);
+              localStorage.setItem("type", response.data.type);
+              localStorage.setItem("id", response.data._id);
+              setLoggedin(isAuth());
+              setPopup({
+                open: true,
+                icon: "success",
+                message: "Logged in successfully",
+              });
+              history("/referrals");
+            }
           })
           .catch((err) => {
             setPopup({
@@ -248,81 +221,75 @@ export default function SignUp() {
   };
 
   const handleLoginRecruiter = () => {
-    const tmpErrorHandler = {};
-    Object.keys(inputErrorHandler).forEach((obj) => {
-      if (inputErrorHandler[obj].required && inputErrorHandler[obj].untouched) {
-        tmpErrorHandler[obj] = {
-          required: true,
-          untouched: false,
-          error: true,
-          message: `${obj[0].toUpperCase() + obj.substr(1)} is required`,
-        };
+    try {
+      const tmpErrorHandler = {};
+      Object.keys(inputErrorHandler).forEach((obj) => {
+        if (inputErrorHandler[obj].required && inputErrorHandler[obj].untouched) {
+          tmpErrorHandler[obj] = {
+            required: true,
+            untouched: false,
+            error: true,
+            message: `${obj[0].toUpperCase() + obj.substr(1)} is required`,
+          };
+        } else {
+          tmpErrorHandler[obj] = inputErrorHandler[obj];
+        }
+      });
+
+      let updatedDetails = {
+        ...signupDetails,
+        contactNumber: isValidPhoneNumber(signupDetails.contactNumber) ? `+${phone}` : "",
+      };
+
+      setSignupDetails(updatedDetails);
+
+      const verified = !Object.keys(tmpErrorHandler).some((obj) => {
+        return tmpErrorHandler[obj].error;
+      });
+
+      if (!verified) {
+        axios
+          .post(apiList.signup, updatedDetails)
+          .then((response) => {
+            const emailVerificationRequired = response.data.emailVerificationRequired;
+
+            if (emailVerificationRequired) {
+              localStorage.setItem("email", signupDetails.email);
+              history("/verify-email"); // Chuyển hướng đến trang xác minh OTP
+            } else {
+              localStorage.setItem("token", response.data.token);
+              localStorage.setItem("type", response.data.type);
+              localStorage.setItem("id", response.data._id);
+              setLoggedin(isAuth());
+              setPopup({
+                open: true,
+                icon: "success",
+                message: "Logged in successfully",
+              });
+              history("/admin"); // Điều hướng dành riêng cho recruiter
+            }
+          })
+          .catch((err) => {
+            setPopup({
+              open: true,
+              icon: "error",
+              message: err.response?.data?.message || "An error occurred",
+            });
+            console.error(err.response);
+          });
       } else {
-        tmpErrorHandler[obj] = inputErrorHandler[obj];
-      }
-    });
-
-    let updatedDetails = {
-      type: signupDetails.type,
-      email: signupDetails.email,
-      password: signupDetails.password,
-      bio: signupDetails.bio,
-      contactNumber: isValidPhoneNumber(signupDetails.contactNumber)
-        ? `+${phone}`
-        : "",
-      profile: signupDetails.profile,
-      news: signupDetails.news,
-    };
-    if (phone !== "") {
-      updatedDetails = {
-        ...signupDetails,
-        contactNumber: `+${phone}`,
-      };
-    } else {
-      updatedDetails = {
-        ...signupDetails,
-        contactNumber: "",
-      };
-    }
-
-    setSignupDetails(updatedDetails);
-
-    const verified = !Object.keys(tmpErrorHandler).some((obj) => {
-      return tmpErrorHandler[obj].error;
-    });
-
-    console.log(updatedDetails);
-
-    if (!verified) {
-      axios
-        .post(apiList.signup, updatedDetails)
-        .then((response) => {
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("type", response.data.type);
-          localStorage.setItem("id", response.data._id);
-          setLoggedin(isAuth());
-          setPopup({
-            open: true,
-            icon: "success",
-            message: "Logged in successfully",
-          });
-          console.log(response);
-          history("/admin");
-        })
-        .catch((err) => {
-          setPopup({
-            open: true,
-            icon: "error",
-            message: err.response.data.message,
-          });
-          console.log(err.response);
+        setInputErrorHandler(tmpErrorHandler);
+        setPopup({
+          open: true,
+          icon: "error",
+          message: "Incorrect Input",
         });
-    } else {
-      setInputErrorHandler(tmpErrorHandler);
+      }
+    } catch (error) {
       setPopup({
         open: true,
         icon: "error",
-        message: "Incorrect Input",
+        message: error.message || "An unexpected error occurred",
       });
     }
   };
@@ -372,18 +339,13 @@ export default function SignUp() {
   return (
     <div className="min-h-screen bg-[#f8e5d4] md:py-24">
       <div className="bg-white rounded-2xl pt-10 md:px-8 px-6 pb-8 text-left md:w-4/12 w-11/12 mx-auto">
-        <h2 className="text-4xl font-semibold text-gray-900 leading-none">
-          Welcome to 2THN Job Portal
-        </h2>
+        <h2 className="text-4xl font-semibold text-gray-900 leading-none">Welcome to 2THN Job Portal</h2>
         <p className="text-md text-gray-600 pb-8">
-          The information you add below is used to make your referrals more
-          credible and it can be edited later.
+          The information you add below is used to make your referrals more credible and it can be edited later.
         </p>
 
         <div>
-          <label className="block mb-2 text-sm font-medium text-gray-900 bg-white">
-            Select a type
-          </label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 bg-white">Select a type</label>
           <select
             className="block border border-grey-light w-full p-3 rounded mb-4"
             value={signupDetails.type}
@@ -453,11 +415,7 @@ export default function SignUp() {
                 className="mb-2"
                 onBlur={(e) => {
                   if (e.target.value === "") {
-                    handleInputError(
-                      "education",
-                      true,
-                      "Education is required!"
-                    );
+                    handleInputError("education", true, "Education is required!");
                   } else {
                     handleInputError("education", false, "");
                   }
@@ -501,9 +459,7 @@ export default function SignUp() {
                     className="mb-1"
                   />
                 </div>
-                <span className="text-[#ff3131] text-sm font-semibold">
-                  {inputErrorHandler.education.message}
-                </span>
+                <span className="text-[#ff3131] text-sm font-semibold">{inputErrorHandler.education.message}</span>
               </div>
             ))}
             <div>
@@ -562,26 +518,16 @@ export default function SignUp() {
             <div
               onBlur={(e) => {
                 if (e.target.value === "") {
-                  handleInputError(
-                    "contactNumber",
-                    true,
-                    "Contact Number is required!"
-                  );
+                  handleInputError("contactNumber", true, "Contact Number is required!");
                 } else {
                   handleInputError("contactNumber", false, "");
                 }
               }}
             >
               <div>
-                <PhoneInput
-                  country={"vn"}
-                  value={phone}
-                  onChange={(phone) => setPhone(phone)}
-                />
+                <PhoneInput country={"vn"} value={phone} onChange={(phone) => setPhone(phone)} />
               </div>
-              <span className="text-[#ff3131] text-sm font-semibold">
-                {inputErrorHandler.contactNumber.message}
-              </span>
+              <span className="text-[#ff3131] text-sm font-semibold">{inputErrorHandler.contactNumber.message}</span>
             </div>
           </>
         )}
@@ -594,28 +540,16 @@ export default function SignUp() {
               className="w-full border-2 h-[200px] my-4 gap-4 flex flex-col items-center justify-center border-gray-400 border-dashed rounded-md"
               htmlFor="file"
             >
-              <div className="flex flex-col items-center justify-center">
-                Upload image
-              </div>
+              <div className="flex flex-col items-center justify-center">Upload image</div>
             </label>
-            <input
-              onChange={uploadFile}
-              hidden
-              type="file"
-              id="file"
-              multiple
-            />
+            <input onChange={uploadFile} hidden type="file" id="file" multiple />
             <div className="w-full">
               <h3 className="font-medium py-4">Select image</h3>
               <div className="flex gap-4 items-center">
                 {signupDetails.profile ? (
                   <div className="relative w-1/3 h-1/3">
                     <img
-                      src={
-                        Array.isArray(signupDetails.profile)
-                          ? signupDetails.profile[0]
-                          : signupDetails.profile
-                      }
+                      src={Array.isArray(signupDetails.profile) ? signupDetails.profile[0] : signupDetails.profile}
                       alt="preview"
                       className="w-full h-full object-cover rounded-md"
                     />
@@ -641,8 +575,7 @@ export default function SignUp() {
             }
           />
           <span className="text-sm">
-            Keep me up-to-date on exclusive Greet updates and new job posts! You
-            can opt-out at any time.
+            Keep me up-to-date on exclusive Greet updates and new job posts! You can opt-out at any time.
           </span>
         </label>
 
@@ -654,22 +587,17 @@ export default function SignUp() {
               : "bg-yellow-100 text-yellow-800 cursor-not-allowed border-yellow-100"
           }`}
           onClick={() => {
-            signupDetails.type === "applicant"
-              ? handleLogin()
-              : handleLoginRecruiter();
+            signupDetails.type === "applicant" ? handleLogin() : handleLoginRecruiter();
           }}
           disabled={
-            (signupDetails.type === "applicant" &&
-              !allFieldsCheckedApplicant) ||
+            (signupDetails.type === "applicant" && !allFieldsCheckedApplicant) ||
             (signupDetails.type === "recruiter" && !allFieldsCheckedRecruiter)
           }
         >
           Create your account
         </button>
 
-        <p className="text-xs text-center mt-6">
-          By creating an account you agree to Greet's Terms and Conditions.
-        </p>
+        <p className="text-xs text-center mt-6">By creating an account you agree to Greet's Terms and Conditions.</p>
       </div>
     </div>
   );

@@ -20,7 +20,9 @@ let schema = new mongoose.Schema(
       enum: ["recruiter", "applicant", "admin"],
       required: true,
     },
-
+    otp: {
+      type: String,
+    },
     passwordChangedAt: {
       type: String,
     },
@@ -52,24 +54,6 @@ schema.pre("save", function (next) {
   });
 });
 
-// Password verification upon login
-// schema.methods.login = function (password) {
-//   let user = this;
-
-//   return new Promise((resolve, reject) => {
-//     bcrypt.compare(password, user.password, (err, result) => {
-//       if (err) {
-//         reject(err);
-//       }
-//       if (result) {
-//         resolve();
-//       } else {
-//         reject();
-//       }
-//     });
-//   });
-// };
-
 schema.methods = {
   login: function (password) {
     let user = this;
@@ -89,10 +73,7 @@ schema.methods = {
   },
   createPasswordChangedToken: function () {
     const resetToken = crypto.randomBytes(32).toString("hex");
-    this.passwordResetToken = crypto
-      .createHash("sha256")
-      .update(resetToken)
-      .digest("hex");
+    this.passwordResetToken = crypto.createHash("sha256").update(resetToken).digest("hex");
     this.passwordResetExpires = Date.now() + 5 * 60 * 1000;
     return resetToken;
   },

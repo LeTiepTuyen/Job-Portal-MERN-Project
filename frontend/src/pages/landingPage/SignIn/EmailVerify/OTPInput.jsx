@@ -5,6 +5,7 @@ import { SetPopupContext } from "App";
 import axios from "axios";
 import apiList from "../../../../libs/apiList";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function OTPInput() {
   const { email, otp, setPage } = useContext(SetPopupContext);
@@ -20,41 +21,44 @@ export default function OTPInput() {
         recipient_email: email,
       })
       .then(() => setDisable(true))
-      .then(() => alert("A new OTP has succesfully been sent to your email."))
+      .then(() => toast.success("A new OTP has been sent to your email."))
       .then(() => setTimer(60))
       .catch(console.log);
   }
 
-  // const verifyOTP = async () => {
-  //   try {
-  //     // Gọi API backend để kiểm tra xác nhận OTP
-  //     const response = await axios.post(
-  //       apiList.OTP,
-  //       {
-  //         email: localStorage.getItem("email"),
-  //         // enteredOTP: localStorage.getItem("otp").trim().split(""),
-  //       },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
+  const verifyOTP = async () => {
+    try {
+      const enteredOTP = OTPinput.join("").trim();
+      console.log("Entered OTP:", enteredOTP); // Log OTP nhập vào form
 
-  //     if (response.data.success) {
-  //       alert(
-  //         "Verification successful. You can proceed with the registration."
-  //       );
-  //       history("/reset-recovered");
-  //     } else {
-  //       alert("Verification failed. Please check your OTP and try again.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error verifying OTP:", error);
-  //     alert("Error verifying OTP. Please try again.");
-  //   }
-  // };
-  // console.log("Entered OTP: ", localStorage.getItem("otp").trim().split(""));
+      // Gọi API backend để kiểm tra xác nhận OTP
+      const response = await axios.post(
+        apiList.OTP,
+        {
+          email: localStorage.getItem("email"),
+          enteredOTP: enteredOTP, // Join and trim the OTP before sending
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.success) {
+        toast.success("Verification successful. You can proceed with registration.");
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("type", response.data.type);
+        localStorage.setItem("id", response.data._id);
+        history("/referrals");
+      } else {
+        toast.error("Verification failed. Please check your OTP and try again.");
+      }
+    } catch (error) {
+      console.error("Error verifying OTP:", error);
+      toast.error("Error verifying OTP. Please try again.");
+    }
+  };
 
   useEffect(() => {
     let interval = setInterval(() => {
@@ -93,14 +97,7 @@ export default function OTPInput() {
                       type="text"
                       name=""
                       id=""
-                      onChange={(e) =>
-                        setOTPinput([
-                          e.target.value,
-                          OTPinput[1],
-                          OTPinput[2],
-                          OTPinput[3],
-                        ])
-                      }
+                      onChange={(e) => setOTPinput([e.target.value, OTPinput[1], OTPinput[2], OTPinput[3]])}
                     ></input>
                   </div>
                   <div className="w-16 h-16 ">
@@ -110,14 +107,7 @@ export default function OTPInput() {
                       type="text"
                       name=""
                       id=""
-                      onChange={(e) =>
-                        setOTPinput([
-                          OTPinput[0],
-                          e.target.value,
-                          OTPinput[2],
-                          OTPinput[3],
-                        ])
-                      }
+                      onChange={(e) => setOTPinput([OTPinput[0], e.target.value, OTPinput[2], OTPinput[3]])}
                     ></input>
                   </div>
                   <div className="w-16 h-16 ">
@@ -127,14 +117,7 @@ export default function OTPInput() {
                       type="text"
                       name=""
                       id=""
-                      onChange={(e) =>
-                        setOTPinput([
-                          OTPinput[0],
-                          OTPinput[1],
-                          e.target.value,
-                          OTPinput[3],
-                        ])
-                      }
+                      onChange={(e) => setOTPinput([OTPinput[0], OTPinput[1], e.target.value, OTPinput[3]])}
                     ></input>
                   </div>
                   <div className="w-16 h-16 ">
@@ -144,14 +127,7 @@ export default function OTPInput() {
                       type="text"
                       name=""
                       id=""
-                      onChange={(e) =>
-                        setOTPinput([
-                          OTPinput[0],
-                          OTPinput[1],
-                          OTPinput[2],
-                          e.target.value,
-                        ])
-                      }
+                      onChange={(e) => setOTPinput([OTPinput[0], OTPinput[1], OTPinput[2], e.target.value])}
                     ></input>
                   </div>
                 </div>
@@ -159,7 +135,7 @@ export default function OTPInput() {
                 <div className="flex flex-col space-y-5">
                   <div>
                     <a
-                      // onClick={() => verifyOTP()}
+                      onClick={() => verifyOTP()}
                       className="flex flex-row cursor-pointer items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm"
                       href="#!"
                     >

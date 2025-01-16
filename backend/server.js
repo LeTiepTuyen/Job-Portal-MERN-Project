@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const passportConfig = require("./middleware/passportConfig");
 const cors = require("cors");
 require("dotenv").config();
-
+const setupSwaggerDocs = require("./utils/swagger"); // Import Swagger config
 const initRouter = require("./routes");
 
 // Connect to MongoDB
@@ -15,6 +15,7 @@ mongoose
 
 // Create an Express application, set port for server
 const app = express();
+
 const port = 5000;
 
 // Middleware
@@ -24,7 +25,10 @@ app.use(cors());
 app.use(express.json());
 app.use(passportConfig.initialize());
 
-// Initialize routes
+// Setup Swagger docs
+setupSwaggerDocs(app);
+
+// Initialize routess
 initRouter(app);
 
 // Start server

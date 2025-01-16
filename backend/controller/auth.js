@@ -10,30 +10,59 @@ const Recruiter = require("../model/recruiter");
 const JobApplicant = require("../model/jobApplicant");
 const sendMail = require("../utils/sendMail");
 
-// const generateOTP = () => {
-//   const min = 1000;
-//   const max = 9999;
-//   return Math.floor(Math.random() * (max - min + 1)) + min;
-// };
+const generateOTP = () => {
+  const min = 1000;
+  const max = 9999;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
-// const sendVerificationEmail = async (email, otp) => {
-//   try {
-//     // Gọi hàm sendEmail để gửi email với mã OTP
-//     const result = await sendEmail(email, otp); // Pass email and otp directly
+const sendVerificationEmail = async (email, otp) => {
+  try {
+    // Gọi hàm sendMail để gửi email với mã OTP
+    const result = await sendMail({
+      email: email,
+      subject: "Email Verification",
+      html: `<!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>OTP Email Template</title>
+            </head>
+            <body>
+            <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+              <div style="margin:50px auto;width:70%;padding:20px 0">
+                <div style="border-bottom:1px solid #eee">
+                  <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Job Portal</a>
+                </div>
+                <p style="font-size:1.1em">Hi,</p>
+                <p>Thank you for choosing Job Portal. Use the following OTP to complete your Email Verification Procedure. OTP is valid for 5 minutes</p>
+                <h2 style="background: #00466a;margin: 0 auto;width: max-content;padding: 0 10px;color: #fff;border-radius: 4px;">${otp}</h2>
+                <p style="font-size:0.9em;">Regards,<br />Job Portal</p>
+                <hr style="border:none;border-top:1px solid #eee" />
+                <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
+                  <p>Job Portal Inc</p>
+                  <p>1600 Amphitheatre Parkway</p>
+                  <p>California</p>
+                </div>
+              </div>
+            </div>
+            </body>
+            </html>`,
+    });
 
-//     return result;
-//   } catch (error) {
-//     console.error("Error sending verification email:", error);
-//     throw new Error("Error sending verification email");
-//   }
-// };
+    return result;
+  } catch (error) {
+    console.error("Error sending verification email:", error);
+    throw new Error("Error sending verification email");
+  }
+};
 
 const SignUp = async (req, res) => {
   try {
     // Extract data from the request body
     const data = req.body;
 
-    // create a new user
+    // Create a new user
     let user = new User({
       email: data.email,
       password: data.password,
@@ -41,58 +70,53 @@ const SignUp = async (req, res) => {
       _id: data._id,
     });
 
-    // Create user details based on user type
-    user
-      .save()
-      .then(() => {
-        const userDetails =
-          user.type == "recruiter"
-            ? new Recruiter({
-                userId: user._id,
-                name: data.name,
-                contactNumber: data.contactNumber,
-                bio: data.bio,
-                profile: data.profile,
-              })
-            : new JobApplicant({
-                userId: user._id,
-                name: data.name,
-                education: data.education,
-                skills: data.skills,
-                rating: data.rating,
-                resume: data.resume,
-                profile: data.profile,
-              });
+    await user.save(); // Lưu người dùng
 
-        userDetails
-          .save()
-          .then(() => {
-            // Token
-            const token = jwt.sign({ _id: user._id }, authKeys.jwtSecretKey);
-            res.json({
-              token: token,
-              type: user.type,
-              _id: user._id,
-            });
+    const userDetails =
+      user.type === "recruiter"
+        ? new Recruiter({
+            userId: user._id,
+            name: data.name,
+            contactNumber: data.contactNumber,
+            bio: data.bio,
+            profile: data.profile,
           })
-          .catch((err) => {
-            user
-              .delete()
-              .then(() => {
-                res.status(400).json(err);
-              })
-              .catch((err) => {
-                res.json({ error: err });
-              });
-            err;
+        : new JobApplicant({
+            userId: user._id,
+            name: data.name,
+            education: data.education,
+            skills: data.skills,
+            rating: data.rating,
+            resume: data.resume,
+            profile: data.profile,
           });
-      })
-      .catch((err) => {
-        res.status(400).json(err);
-      });
+
+    await userDetails.save(); // Lưu chi tiết người dùng
+
+    // Gửi OTP xác minh email
+    try {
+      const otp = generateOTP();
+      await sendVerificationEmail(user.email, otp);
+      user.otp = otp.toString(); // Ensure OTP is stored as a string
+      await user.save();
+      console.log("Verification email sent successfully");
+    } catch (err) {
+      console.error("Error during email verification:", err.message);
+    }
+
+    // Generate JWT Token
+    const token = jwt.sign({ _id: user._id }, authKeys.jwtSecretKey);
+
+    // Trả về phản hồi thành công
+    res.json({
+      token: token,
+      type: user.type,
+      _id: user._id,
+      emailVerificationRequired: true,
+    });
   } catch (err) {
-    // Handle errors during user creation or user details creation
-    console.log(err.message);
+    // Xử lý lỗi trong quá trình lưu
+    console.error("Error in SignUp:", err.message);
     res.status(400).json({ error: err.message });
   }
 };
@@ -116,7 +140,8 @@ const sendEmail = (recipient_email, OTP) => {
             <head>
               <meta charset="UTF-8">
               <title>CodePen - OTP Email Template</title>
-              
+             
+
 
             </head>
             <body>
@@ -139,7 +164,7 @@ const sendEmail = (recipient_email, OTP) => {
               </div>
             </div>
             <!-- partial -->
-              
+             
             </body>
             </html>`,
     };
@@ -160,36 +185,31 @@ const VerifyEmail = async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res
-        .status(404)
-        .json({ success: false, message: "User not found" });
+      throw new Error("User not found");
     }
 
-    const otp = generateOTP();
+    const trimmedEnteredOTP = enteredOTP.trim(); // Trim the entered OTP
 
-    await sendVerificationEmail(user.email, otp);
-
-    // save the user to the database
-    await user.save();
-
-    if (
-      Array.isArray(enteredOTP) &&
-      user.otp !== undefined &&
-      user.otp.trim() === enteredOTP.map((digit) => digit.trim()).join("")
-    ) {
-      console.log("Stored OTP: ", user.otp.trim());
+    if (user.otp !== undefined && user.otp.trim() === trimmedEnteredOTP) {
       user.otp = null;
       await user.save();
 
-      return res
-        .status(200)
-        .json({ success: true, message: "OTP verify successfully" });
+      // Generate JWT Token
+      const token = jwt.sign({ _id: user._id }, authKeys.jwtSecretKey);
+
+      return res.json({
+        success: true,
+        message: "Verification successful",
+        token: token,
+        type: user.type,
+        _id: user._id,
+      });
     } else {
       return res.status(400).json({ success: false, message: "Invalid OTP" });
     }
   } catch (error) {
     console.error("Error verify OTP: ", error);
-    res.status(500).json({ success: false, message: "Internal Server Error" });
+    res.status(500).json({ error: "Error verifying OTP" });
   }
 };
 
@@ -224,26 +244,22 @@ const Login = (req, res, next) => {
   //     }
   //   )(req, res, next);
   // // });
-  passport.authenticate(
-    "local",
-    { session: false },
-    function (err, user, info) {
-      if (err) {
-        return next(err);
-      }
-      if (!user) {
-        res.status(401).json(info);
-        return;
-      }
-      // Token
-      const token = jwt.sign({ _id: user._id }, authKeys.jwtSecretKey);
-      res.json({
-        token: token,
-        type: user.type,
-        _id: user._id,
-      });
+  passport.authenticate("local", { session: false }, function (err, user, info) {
+    if (err) {
+      return next(err);
     }
-  )(req, res, next);
+    if (!user) {
+      res.status(401).json(info);
+      return;
+    }
+    // Token
+    const token = jwt.sign({ _id: user._id }, authKeys.jwtSecretKey);
+    res.json({
+      token: token,
+      type: user.type,
+      _id: user._id,
+    });
+  })(req, res, next);
 };
 
 const forgotPassword = async (req, res) => {
@@ -266,7 +282,7 @@ const forgotPassword = async (req, res) => {
           Reset Password
       </a>
     </button>
-    <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px">Nếu bạn không yêu cầu đặt lại mật khẩu, 
+    <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px">Nếu bạn không yêu cầu đặt lại mật khẩu,
     thì có thể bỏ qua email này</p>
     <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 14px">Cảm ơn bạn, </p>
     <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 14px">2THN Careers Support Team!</p>
@@ -293,10 +309,7 @@ const resetPassword = async (req, res) => {
       return res.status(400).json({ error: "Missing Input" });
     }
 
-    const passwordResetToken = crypto
-      .createHash("sha256")
-      .update(token)
-      .digest("hex");
+    const passwordResetToken = crypto.createHash("sha256").update(token).digest("hex");
 
     const user = await User.findOne({
       passwordResetToken,
